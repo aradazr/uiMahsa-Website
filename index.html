@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahsa - UI/UX Designer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h2>uiuxmahsa</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Case Study</a></li>
+                <li><a href="#design-system" class="nav-link">Design System</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#concepts" class="nav-link">Concepts</a></li>
+                <li><a href="#kit" class="nav-link">Kit</a></li>
+            </ul>
+            <div class="nav-button">
+                <a href="#about" class="about-me-btn">About me</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="parallax-layer-1"></div>
+        <div class="parallax-layer-2"></div>
+        <img src="images/cursurOne.png" alt="Cursor One" class="hero-cursor-one">
+        <img src="images/cursurTwo.png" alt="Cursor Two" class="hero-cursor-two">
+        <div class="hero-content">
+            <img src="images/whiteMahsa.png" alt="Mahsa" class="hero-image"
+                onerror="this.style.background='red'; this.style.display='block';">
+            <span class="hero-about-label">About Me</span>
+            <h1 class="hero-title">Hi, I am Mahsa</h1>
+            <p class="hero-subtitle">I'm a dynamic UI/UX designer balancing both freelance and full-time opportunities,
+                eager to learn and tackle real-world design challenges. Responsibility is at the core of my work ethic,
+                and I thrive in collaborative environments where creative ideas and teamwork can flourish.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Contact Me</a>
+                <a href="#" class="btn btn-secondary">My Resume</a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="concepts-header">
+                <div class="concepts-background">
+                    <div class="concepts-content">
+                        <span class="concepts-label">Concepts</span>
+                        <h2 class="concepts-title">My Creative Concepts</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="projects-grid">
+                <div class="project-showcase">
+                    <div class="project-image">
+                        <img src="images/projects.png" alt="Recycle & Reward App" class="project-img">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Recycle & Reward – Gamified Recycling App</h3>
+                        <p class="project-description">
+                            An innovative recycling app designed with both light and dark modes to enhance user
+                            experience.
+                            The app encourages users to actively participate in recycling by earning points for every
+                            recyclable
+                            item they submit. These points can be redeemed for eco-friendly products, fostering a
+                            sustainable
+                            lifestyle through gamification. This app aims to make recycling engaging, rewarding, and
+                            accessible for everyone.
+                        </p>
+                        <div class="project-buttons">
+                            <a href="#" class="project-btn btn-figma">
+                                <i class="fab fa-figma"></i>
+                                See on Figma
+                            </a>
+                            <a href="#" class="project-btn btn-behance">
+                                <i class="fab fa-behance"></i>
+                                See on Behance
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-showcase">
+                    <div class="project-image">
+                        <img src="images/projects.png" alt="Fitness Tracker App" class="project-img">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">FitFlow – Smart Fitness Tracker</h3>
+                        <p class="project-description">
+                            A comprehensive fitness tracking application that combines workout planning, nutrition
+                            tracking,
+                            and social features. The app provides personalized workout recommendations, real-time
+                            progress
+                            tracking, and community challenges to keep users motivated on their fitness journey.
+                        </p>
+                        <div class="project-buttons">
+                            <a href="#" class="project-btn btn-figma">
+                                <i class="fab fa-figma"></i>
+                                See on Figma
+                            </a>
+                            <a href="#" class="project-btn btn-behance">
+                                <i class="fab fa-behance"></i>
+                                See on Behance
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-showcase hidden-project">
+                    <div class="project-image">
+                        <img src="images/projects.png" alt="E-commerce Platform" class="project-img">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">ShopSmart – Modern E-commerce Platform</h3>
+                        <p class="project-description">
+                            A cutting-edge e-commerce platform designed for seamless online shopping experiences.
+                            Features include AI-powered product recommendations, advanced search filters, secure
+                            payment integration, and a mobile-first responsive design that works perfectly across all
+                            devices.
+                        </p>
+                        <div class="project-buttons">
+                            <a href="#" class="project-btn btn-figma">
+                                <i class="fab fa-figma"></i>
+                                See on Figma
+                            </a>
+                            <a href="#" class="project-btn btn-behance">
+                                <i class="fab fa-behance"></i>
+                                See on Behance
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="see-more-container">
+                <button class="see-more-btn" id="seeMoreBtn">
+                    <span class="see-more-text">See More Projects</span>
+                    <i class="fas fa-chevron-down see-more-icon"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What People Say</h2>
+                <p class="section-subtitle">Client testimonials and feedback</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Sarah's attention to detail and creative vision transformed our project completely. Her work
+                            exceeded our expectations."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                            alt="John Smith">
+                        <div class="author-info">
+                            <h4>John Smith</h4>
+                            <p>CEO, TechStart</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Working with Sarah was a pleasure. She understood our brand perfectly and delivered exactly
+                            what we needed."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                            alt="Emily Johnson">
+                        <div class="author-info">
+                            <h4>Emily Johnson</h4>
+                            <p>Marketing Director, CreativeCo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Sarah's design skills are exceptional. She created a beautiful, functional website that
+                            perfectly represents our company."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                            alt="Michael Brown">
+                        <div class="author-info">
+                            <h4>Michael Brown</h4>
+                            <p>Founder, DesignStudio</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle">Ready to start your next project?</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>sarah@example.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>San Francisco, CA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link" target="_blank">
+                        <i class="fab fa-dribbble"></i>
+                        <span>Dribbble</span>
+                    </a>
+                    <a href="#" class="social-link" target="_blank">
+                        <i class="fab fa-figma"></i>
+                        <span>Figma</span>
+                    </a>
+                    <a href="#" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="#" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Mahsa</h3>
+                    <p>UI/UX Designer</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#work">Work</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" target="_blank"><i class="fab fa-dribbble"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-figma"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mahsa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

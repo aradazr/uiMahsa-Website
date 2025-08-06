@@ -475,35 +475,131 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // See More Projects functionality
-    const seeMoreBtn = document.getElementById('seeMoreBtn');
-    const hiddenProject = document.querySelector('.hidden-project');
+    // Scroll-triggered animations for project and concept cards
+    function initScrollAnimations() {
+        const projectCards = document.querySelectorAll('.project-showcase');
+        const seeMoreBtns = document.querySelectorAll('.see-more-btn');
 
-    console.log('See More Button:', seeMoreBtn);
-    console.log('Hidden Project:', hiddenProject);
+        // Create Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.2, // Trigger when 20% of the element is visible
+            rootMargin: '0px 0px -50px 0px' // Trigger slightly before element comes into view
+        };
 
-    if (seeMoreBtn && hiddenProject) {
-        seeMoreBtn.addEventListener('click', function () {
-            console.log('Button clicked!');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add loaded class to trigger animation
+                    entry.target.classList.add('loaded');
 
-            // Toggle the show class
-            hiddenProject.classList.toggle('show');
-            seeMoreBtn.classList.toggle('active');
+                    // Once animation is triggered, stop observing
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
 
-            // Update button text
-            const buttonText = seeMoreBtn.querySelector('.see-more-text');
-            if (hiddenProject.classList.contains('show')) {
+        // Observe all project cards
+        projectCards.forEach(card => {
+            observer.observe(card);
+        });
+
+        // Observe all see more button containers
+        const seeMoreContainers = document.querySelectorAll('.see-more-container');
+        seeMoreContainers.forEach((container, index) => {
+            const buttonObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && seeMoreBtns[index]) {
+                        seeMoreBtns[index].classList.add('loaded');
+                        buttonObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            buttonObserver.observe(container);
+        });
+    }
+
+    // See More Projects functionality (Projects Section)
+    const seeMoreProjectsBtn = document.getElementById('seeMoreProjectsBtn');
+    const hiddenProjectInProjects = document.querySelector('#projects .hidden-project');
+
+    if (seeMoreProjectsBtn && hiddenProjectInProjects) {
+        seeMoreProjectsBtn.addEventListener('click', function () {
+            // Toggle the show class with a small delay for smoother animation
+            if (!hiddenProjectInProjects.classList.contains('show')) {
+                // Show the project
+                hiddenProjectInProjects.classList.add('show');
+                seeMoreProjectsBtn.classList.add('active');
+
+                // Update button text
+                const buttonText = seeMoreProjectsBtn.querySelector('.see-more-text');
                 buttonText.textContent = 'See Less Projects';
             } else {
+                // Hide the project
+                hiddenProjectInProjects.classList.remove('show');
+                seeMoreProjectsBtn.classList.remove('active');
+
+                // Update button text
+                const buttonText = seeMoreProjectsBtn.querySelector('.see-more-text');
                 buttonText.textContent = 'See More Projects';
             }
         });
-
-        // Test click handler
-        console.log('Event listener added successfully');
-    } else {
-        console.log('Button or hidden project not found!');
-        console.log('seeMoreBtn:', seeMoreBtn);
-        console.log('hiddenProject:', hiddenProject);
     }
+
+    // See More Projects functionality (Concepts Section)
+    const seeMoreBtn = document.getElementById('seeMoreBtn');
+    const hiddenProjectInConcepts = document.querySelector('#concepts .hidden-project');
+
+    if (seeMoreBtn && hiddenProjectInConcepts) {
+        seeMoreBtn.addEventListener('click', function () {
+            // Toggle the show class with optimized animation
+            if (!hiddenProjectInConcepts.classList.contains('show')) {
+                // Show the project
+                hiddenProjectInConcepts.classList.add('show');
+                seeMoreBtn.classList.add('active');
+
+                // Update button text
+                const buttonText = seeMoreBtn.querySelector('.see-more-text');
+                buttonText.textContent = 'See Less Concepts';
+            } else {
+                // Hide the project
+                hiddenProjectInConcepts.classList.remove('show');
+                seeMoreBtn.classList.remove('active');
+
+                // Update button text
+                const buttonText = seeMoreBtn.querySelector('.see-more-text');
+                buttonText.textContent = 'See More Concepts';
+            }
+        });
+    }
+
+    // See More Kit functionality (Kit Section)
+    const seeMoreKitBtn = document.getElementById('seeMoreKitBtn');
+    const hiddenProjectInKit = document.querySelector('#kit .hidden-project');
+
+    if (seeMoreKitBtn && hiddenProjectInKit) {
+        seeMoreKitBtn.addEventListener('click', function () {
+            // Toggle the show class with optimized animation
+            if (!hiddenProjectInKit.classList.contains('show')) {
+                // Show the project
+                hiddenProjectInKit.classList.add('show');
+                seeMoreKitBtn.classList.add('active');
+
+                // Update button text
+                const buttonText = seeMoreKitBtn.querySelector('.see-more-text');
+                buttonText.textContent = 'See Less Kit';
+            } else {
+                // Hide the project
+                hiddenProjectInKit.classList.remove('show');
+                seeMoreKitBtn.classList.remove('active');
+
+                // Update button text
+                const buttonText = seeMoreKitBtn.querySelector('.see-more-text');
+                buttonText.textContent = 'See More Kit';
+            }
+        });
+    }
+
+    // Initialize scroll animations
+    initScrollAnimations();
 }); 

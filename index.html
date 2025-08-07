@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -19,14 +20,16 @@
                 <h2>uiuxmahsa</h2>
             </div>
             <ul class="nav-menu">
-                <li><a href="#home" class="nav-link active">Case Study</a></li>
-                <li><a href="#design-system" class="nav-link">Design System</a></li>
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About me</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#concepts" class="nav-link">Concepts</a></li>
                 <li><a href="#kit" class="nav-link">Kit</a></li>
             </ul>
             <div class="nav-button">
-                <a href="#about" class="about-me-btn">About me</a>
+                <a href="#contact" class="about-me-btn">
+                    Contact me
+                </a>
             </div>
             <div class="hamburger">
                 <span></span>
@@ -43,16 +46,44 @@
         <img src="images/cursurOne.png" alt="Cursor One" class="hero-cursor-one">
         <img src="images/cursurTwo.png" alt="Cursor Two" class="hero-cursor-two">
         <div class="hero-content">
-            <img src="images/whiteMahsa.png" alt="Mahsa" class="hero-image"
-                onerror="this.style.background='red'; this.style.display='block';">
-            <span class="hero-about-label">About Me</span>
-            <h1 class="hero-title">Hi, I am Mahsa</h1>
-            <p class="hero-subtitle">I'm a dynamic UI/UX designer balancing both freelance and full-time opportunities,
-                eager to learn and tackle real-world design challenges. Responsibility is at the core of my work ethic,
-                and I thrive in collaborative environments where creative ideas and teamwork can flourish.</p>
+            <img src="images/whiteMahsa.png" alt="Mahsa" class="hero-image">
+            <h1 class="hero-title">Hi, I'm Mahsa</h1>
+            <div class="hero-profession">
+                <span>I'm</span>
+                <span class="profession-pill">UiUx Designer</span>
+            </div>
             <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">Contact Me</a>
+                <a href="#projects" class="btn btn-primary">My Projects</a>
                 <a href="#" class="btn btn-secondary">My Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="about">
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="floating-orb"></div>
+        <div class="floating-orb"></div>
+        <div class="floating-orb"></div>
+        <div class="container">
+            <div class="about-header">
+                <div class="about-background">
+                    <div class="about-content">
+                        <span class="about-label">About</span>
+                        <h2 class="about-title">About Me</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="about-text-container">
+                <p class="about-text">I'm a dynamic UI/UX designer balancing both freelance and full-time opportunities,
+                    eager to learn and tackle real-world design challenges. Responsibility is at the core of my work
+                    ethic, and I thrive in collaborative environments where creative ideas and teamwork can flourish.I'm
+                    a dynamic UI/UX designer balancing both freelance and full-time opportunities, eager to learn and
+                    tackle real-world design challenges. Responsibility is at the core of my work ethic</p>
             </div>
         </div>
     </section>
@@ -522,7 +553,7 @@
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h4>Email</h4>
-                            <p>sarah@example.com</p>
+                            <p>mahsa@example.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -539,24 +570,31 @@
                             <p>San Francisco, CA</p>
                         </div>
                     </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Working Hours</h4>
+                            <p>Mon - Fri: 9AM - 6PM PST</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="social-links">
-                    <a href="#" class="social-link" target="_blank">
-                        <i class="fab fa-dribbble"></i>
-                        <span>Dribbble</span>
-                    </a>
-                    <a href="#" class="social-link" target="_blank">
-                        <i class="fab fa-figma"></i>
-                        <span>Figma</span>
-                    </a>
-                    <a href="#" class="social-link" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="#" class="social-link" target="_blank">
-                        <i class="fab fa-github"></i>
-                        <span>GitHub</span>
-                    </a>
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -577,10 +615,11 @@
                     <a href="#contact">Contact</a>
                 </div>
                 <div class="footer-social">
-                    <a href="#" target="_blank"><i class="fab fa-dribbble"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-figma"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" title="Dribbble"><i class="fab fa-dribbble"></i></a>
+                    <a href="#" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="#" target="_blank" title="Behance"><i class="fab fa-behance"></i></a>
                 </div>
             </div>
             <div class="footer-bottom">

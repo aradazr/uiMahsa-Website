@@ -1,5 +1,19 @@
 // Simple JavaScript for the portfolio website
 
+// Global function for inline onclick handler
+function toggleMobileMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    console.log('Global toggleMobileMenu called!');
+
+    if (hamburger && navMenu) {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        document.body.classList.toggle('nav-open');
+    }
+}
+
 // Initialize EmailJS
 (function () {
     emailjs.init("_IuuDYG72uM9Pxa8X");
@@ -30,13 +44,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Mobile menu toggle
-    function toggleMobileMenu() {
-        const navMenu = document.querySelector('.nav-menu');
-        const hamburger = document.querySelector('.hamburger');
+    // Old mobile menu function - removed to prevent conflicts
+    // function toggleMobileMenu() {
+    //     const navMenu = document.querySelector('.nav-menu');
+    //     const hamburger = document.querySelector('.hamburger');
 
-        navMenu.classList.toggle('active');
-        hamburger.classList.toggle('active');
-    }
+    //     navMenu.classList.toggle('active');
+    //     hamburger.classList.toggle('active');
+    // }
 
     // Create magic wand cursor
     function createMagicWandCursor() {
@@ -919,10 +934,65 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Fetch projects, concepts, and kit on page load
+    // Fetch Opinions from API
+    async function fetchOpinions() {
+        try {
+            const response = await fetch('https://pocketbase-5i4fn3.chbk.app/api/collections/mahsa_opinion/records');
+            const data = await response.json();
+
+            if (data.items && data.items.length > 0) {
+                updateOpinionsSection(data.items);
+            }
+        } catch (error) {
+            console.error('Error fetching opinions:', error);
+        }
+    }
+
+    // Update Opinions Section with API data
+    function updateOpinionsSection(opinions) {
+        const testimonialsScroll = document.querySelector('.testimonials-scroll');
+        if (!testimonialsScroll) return;
+
+        // Clear existing content
+        testimonialsScroll.innerHTML = '';
+
+        opinions.forEach((opinion, index) => {
+            const opinionCard = createOpinionCard(opinion, index);
+            testimonialsScroll.appendChild(opinionCard);
+        });
+
+        // Reinitialize scroll animations for new content
+        initScrollAnimations();
+    }
+
+    // Create Opinion Card Element
+    function createOpinionCard(opinion, index) {
+        const opinionCard = document.createElement('div');
+        opinionCard.className = 'testimonial-card';
+
+        const imageUrl = opinion.image ? `https://pocketbase-5i4fn3.chbk.app/api/files/mahsa_opinion/${opinion.id}/${opinion.image}` : 'images/projects.png';
+
+        opinionCard.innerHTML = `
+            <div class="testimonial-content">
+                <p>${opinion.description}</p>
+            </div>
+            <div class="testimonial-author">
+                <img src="${imageUrl}" alt="${opinion.name}">
+                <div class="author-info">
+                    <h4>${opinion.name}</h4>
+                    <p>${opinion.title}</p>
+                </div>
+            </div>
+        `;
+
+        return opinionCard;
+    }
+
+    // Fetch projects, concepts, kit, and opinions on page load
     fetchProjects();
     fetchConcepts();
     fetchKit();
+    fetchOpinions();
 
     // Contact Form Functionality
     const contactForm = document.getElementById('contactForm');
@@ -1058,4 +1128,102 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }, 5000);
     }
+
+    // Mobile Navigation Toggle
+    function initMobileNav() {
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        console.log('Mobile nav elements found:', {
+            hamburger: hamburger,
+            navMenu: navMenu,
+            navLinks: navLinks.length
+        });
+
+        if (hamburger) {
+            hamburger.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Hamburger clicked!');
+
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                document.body.classList.toggle('nav-open');
+
+                console.log('Classes after toggle:', {
+                    hamburgerActive: hamburger.classList.contains('active'),
+                    navMenuActive: navMenu.classList.contains('active'),
+                    bodyNavOpen: document.body.classList.contains('nav-open')
+                });
+            });
+        } else {
+            console.error('Hamburger menu not found!');
+        }
+
+        // Close mobile menu when clicking on a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                console.log('Nav link clicked, closing menu');
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.classList.remove('nav-open');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function (e) {
+            if (hamburger && navMenu && !hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.classList.remove('nav-open');
+            }
+        });
+    }
+
+    // Initialize mobile navigation
+    initMobileNav();
+
+    // Fallback mobile menu - simple click handler
+    document.addEventListener('DOMContentLoaded', function () {
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        console.log('DOMContentLoaded - Elements found:', { hamburger, navMenu });
+
+        if (hamburger && navMenu) {
+            // Remove any existing event listeners
+            hamburger.replaceWith(hamburger.cloneNode(true));
+            const newHamburger = document.querySelector('.hamburger');
+
+            // Add multiple event listeners for maximum compatibility
+            newHamburger.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('DOMContentLoaded hamburger clicked!');
+                newHamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                document.body.classList.toggle('nav-open');
+            });
+
+            newHamburger.addEventListener('touchstart', function (e) {
+                e.preventDefault();
+                console.log('Touch event on hamburger!');
+                newHamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                document.body.classList.toggle('nav-open');
+            });
+
+            // Also add onclick as final fallback
+            newHamburger.onclick = function (e) {
+                e.preventDefault();
+                console.log('Onclick fallback triggered!');
+                newHamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                document.body.classList.toggle('nav-open');
+            };
+        } else {
+            console.error('Hamburger or nav menu not found in DOMContentLoaded!');
+        }
+    });
 }); 

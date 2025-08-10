@@ -605,6 +605,38 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // See More Skills functionality (Skills Section)
+    const seeMoreSkillsBtn = document.getElementById('seeMoreSkillsBtn');
+    const hiddenSkills = document.querySelectorAll('#skills .hidden-skill');
+
+    if (seeMoreSkillsBtn && hiddenSkills.length > 0) {
+        seeMoreSkillsBtn.addEventListener('click', function () {
+            // Toggle the show class for all hidden skills
+            const isShowing = hiddenSkills[0].classList.contains('show');
+
+            hiddenSkills.forEach(skill => {
+                if (isShowing) {
+                    skill.classList.remove('show');
+                } else {
+                    skill.classList.add('show');
+                }
+            });
+
+            // Toggle button state
+            if (isShowing) {
+                seeMoreSkillsBtn.classList.remove('active');
+                // Update button text
+                const buttonText = seeMoreSkillsBtn.querySelector('.see-more-skills-text');
+                buttonText.textContent = 'See More Skills';
+            } else {
+                seeMoreSkillsBtn.classList.add('active');
+                // Update button text
+                const buttonText = seeMoreSkillsBtn.querySelector('.see-more-skills-text');
+                buttonText.textContent = 'See Less Skills';
+            }
+        });
+    }
+
     // Initialize scroll animations
     initScrollAnimations();
 

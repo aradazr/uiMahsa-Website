@@ -421,6 +421,24 @@ body.nav-open {
     }
 }
 
+/* Hero Image Entrance Animation */
+@keyframes hero-image-entrance {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(30px) rotate(-5deg);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05) translateY(-5px) rotate(2deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0) rotate(0deg);
+    }
+}
+
 .hero-content {
     text-align: center;
     position: relative;
@@ -497,9 +515,14 @@ body.nav-open {
 }
 
 .hero-image {
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
+    animation: hero-image-entrance 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
 }
 
 .hero-about-label {
@@ -2507,6 +2530,22 @@ section {
 
 .contact-item p {
     color: var(--text-secondary);
+}
+
+.contact-link {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    color: var(--accent-lilac);
+    transform: translateX(5px);
+}
+
+.contact-link p {
+    margin: 0;
+    transition: all 0.3s ease;
 }
 
 .social-links {

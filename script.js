@@ -807,11 +807,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="project-buttons">
                     ${project.figma ? `<a href="${project.figma}" class="project-btn btn-figma" target="_blank">
                         <i class="fab fa-figma"></i>
-                        See on Figma
+                        Figma
                     </a>` : ''}
-                    ${project.behance ? `<a href="${project.behance}" class="project-btn btn-behance" target="_blank">
-                        <i class="fab fa-behance"></i>
-                        See on Behance
+                    ${project.instagram ? `<a href="${project.instagram}" class="project-btn btn-instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                        Instagram
                     </a>` : ''}
                 </div>
             </div>
@@ -880,13 +880,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 <h3 class="project-title">${concept.title}</h3>
                 <p class="project-description">${concept.subtitle}</p>
                 <div class="project-buttons">
-                    ${concept.figma ? `<a href="${concept.figma}" class="project-btn btn-figma" target="_blank">
-                        <i class="fab fa-figma"></i>
-                        See on Figma
+                    ${concept.dribble ? `<a href="${concept.dribble}" class="project-btn btn-dribbble" target="_blank">
+                        <i class="fab fa-dribbble"></i>
+                        Dribbble
                     </a>` : ''}
-                    ${concept.behance ? `<a href="${concept.behance}" class="project-btn btn-behance" target="_blank">
-                        <i class="fab fa-behance"></i>
-                        See on Behance
+                    ${concept.instagram ? `<a href="${concept.instagram}" class="project-btn btn-instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                        Instagram
                     </a>` : ''}
                 </div>
             </div>
@@ -984,11 +984,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="project-buttons">
                     ${kitItem.figma ? `<a href="${kitItem.figma}" class="project-btn btn-figma" target="_blank">
                         <i class="fab fa-figma"></i>
-                        See on Figma
+                        Figma
                     </a>` : ''}
                     ${kitItem.behance ? `<a href="${kitItem.behance}" class="project-btn btn-behance" target="_blank">
                         <i class="fab fa-behance"></i>
-                        See on Behance
+                        Behance
                     </a>` : ''}
                 </div>
             </div>

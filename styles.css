@@ -2157,6 +2157,30 @@ section {
     background: linear-gradient(135deg, #1a1a1a, #000000);
 }
 
+.btn-instagram {
+    background: linear-gradient(135deg, #833AB4, #FD1D1D, #F77737);
+    color: white;
+    box-shadow: 0 4px 12px rgba(131, 58, 180, 0.3);
+}
+
+.btn-instagram:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(131, 58, 180, 0.4);
+    background: linear-gradient(135deg, #6A1B9A, #E91E63, #FF5722);
+}
+
+.btn-dribbble {
+    background: linear-gradient(135deg, #EA4C89, #FF6B9D);
+    color: white;
+    box-shadow: 0 4px 12px rgba(234, 76, 137, 0.3);
+}
+
+.btn-dribbble:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(234, 76, 137, 0.4);
+    background: linear-gradient(135deg, #D63384, #E91E63);
+}
+
 .btn-behance {
     background: linear-gradient(135deg, #1769ff, #4a90e2);
     color: white;

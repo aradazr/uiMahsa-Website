@@ -101,7 +101,7 @@ body {
 }
 
 .about-me-btn {
-    background: #6B26FF;
+    background: #1B3BEF;
     color: var(--primary-white);
     padding: 0.75rem 1.5rem;
     border-radius: 25px;
@@ -117,7 +117,7 @@ body {
 .about-me-btn:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-medium);
-    background: #5A1FE6;
+    background: #1529C7;
 }
 
 
@@ -888,7 +888,7 @@ body {
 }
 
 .btn-primary {
-    background: #6B26FF;
+    background: #1B3BEF;
     color: white;
     box-shadow: var(--shadow-medium);
     text-align: center;

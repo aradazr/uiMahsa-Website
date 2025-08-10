@@ -525,30 +525,38 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // See More Projects functionality (Projects Section)
-    const seeMoreProjectsBtn = document.getElementById('seeMoreProjectsBtn');
-    const hiddenProjectInProjects = document.querySelector('#projects .hidden-project');
+    function initSeeMoreProjects() {
+        const seeMoreProjectsBtn = document.getElementById('seeMoreProjectsBtn');
+        const hiddenProjects = document.querySelectorAll('#projects .hidden-project');
 
-    if (seeMoreProjectsBtn && hiddenProjectInProjects) {
-        seeMoreProjectsBtn.addEventListener('click', function () {
-            // Toggle the show class with a small delay for smoother animation
-            if (!hiddenProjectInProjects.classList.contains('show')) {
-                // Show the project
-                hiddenProjectInProjects.classList.add('show');
-                seeMoreProjectsBtn.classList.add('active');
+        if (seeMoreProjectsBtn && hiddenProjects.length > 0) {
+            // Remove existing event listeners
+            seeMoreProjectsBtn.replaceWith(seeMoreProjectsBtn.cloneNode(true));
+            const newSeeMoreBtn = document.getElementById('seeMoreProjectsBtn');
 
-                // Update button text
-                const buttonText = seeMoreProjectsBtn.querySelector('.see-more-text');
-                buttonText.textContent = 'See Less Projects';
-            } else {
-                // Hide the project
-                hiddenProjectInProjects.classList.remove('show');
-                seeMoreProjectsBtn.classList.remove('active');
+            newSeeMoreBtn.addEventListener('click', function () {
+                const isShowing = hiddenProjects[0].classList.contains('show');
 
-                // Update button text
-                const buttonText = seeMoreProjectsBtn.querySelector('.see-more-text');
-                buttonText.textContent = 'See More Projects';
-            }
-        });
+                hiddenProjects.forEach(project => {
+                    if (isShowing) {
+                        project.classList.remove('show');
+                    } else {
+                        project.classList.add('show');
+                    }
+                });
+
+                // Toggle button state
+                if (isShowing) {
+                    newSeeMoreBtn.classList.remove('active');
+                    const buttonText = newSeeMoreBtn.querySelector('.see-more-text');
+                    buttonText.textContent = 'See More Projects';
+                } else {
+                    newSeeMoreBtn.classList.add('active');
+                    const buttonText = newSeeMoreBtn.querySelector('.see-more-text');
+                    buttonText.textContent = 'See Less Projects';
+                }
+            });
+        }
     }
 
     // See More Projects functionality (Concepts Section)
@@ -639,6 +647,282 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize scroll animations
     initScrollAnimations();
+
+    // Fetch Projects from API
+    async function fetchProjects() {
+        try {
+            const response = await fetch('https://pocketbase-5i4fn3.chbk.app/api/collections/mahsa_project/records');
+            const data = await response.json();
+
+            if (data.items && data.items.length > 0) {
+                updateProjectsSection(data.items);
+            }
+        } catch (error) {
+            console.error('Error fetching projects:', error);
+        }
+    }
+
+    // Update Projects Section with API data
+    function updateProjectsSection(projects) {
+        const projectsGrid = document.querySelector('#projects .projects-grid');
+        if (!projectsGrid) return;
+
+        // Clear existing content
+        projectsGrid.innerHTML = '';
+
+        projects.forEach((project, index) => {
+            const projectCard = createProjectCard(project, index);
+            projectsGrid.appendChild(projectCard);
+        });
+
+        // Reinitialize scroll animations for new content
+        initScrollAnimations();
+
+        // Initialize see more functionality for new projects
+        initSeeMoreProjects();
+    }
+
+    // Create Project Card Element
+    function createProjectCard(project, index) {
+        const projectCard = document.createElement('div');
+        projectCard.className = 'project-showcase';
+        if (index >= 2) {
+            projectCard.classList.add('hidden-project');
+        }
+
+        const imageUrl = project.photo ? `https://pocketbase-5i4fn3.chbk.app/api/files/mahsa_project/${project.id}/${project.photo}` : 'images/projects.png';
+
+        projectCard.innerHTML = `
+            <div class="project-image">
+                <img src="${imageUrl}" alt="${project.title}" class="project-img">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">${project.title}</h3>
+                <p class="project-description">${project.subtitle}</p>
+                <div class="project-buttons">
+                    ${project.figma ? `<a href="${project.figma}" class="project-btn btn-figma" target="_blank">
+                        <i class="fab fa-figma"></i>
+                        See on Figma
+                    </a>` : ''}
+                    ${project.behance ? `<a href="${project.behance}" class="project-btn btn-behance" target="_blank">
+                        <i class="fab fa-behance"></i>
+                        See on Behance
+                    </a>` : ''}
+                </div>
+            </div>
+        `;
+
+        return projectCard;
+    }
+
+    // Fetch Concepts from API
+    async function fetchConcepts() {
+        try {
+            const response = await fetch('https://pocketbase-5i4fn3.chbk.app/api/collections/mahsa_concept/records');
+            const data = await response.json();
+
+            if (data.items && data.items.length > 0) {
+                updateConceptsSection(data.items);
+            }
+        } catch (error) {
+            console.error('Error fetching concepts:', error);
+        }
+    }
+
+    // Update Concepts Section with API data
+    function updateConceptsSection(concepts) {
+        const conceptsGrid = document.querySelector('#concepts .projects-grid');
+        if (!conceptsGrid) return;
+
+        // Clear existing content
+        conceptsGrid.innerHTML = '';
+
+        concepts.forEach((concept, index) => {
+            const conceptCard = createConceptCard(concept, index);
+            conceptsGrid.appendChild(conceptCard);
+        });
+
+        // Reinitialize scroll animations for new content
+        initScrollAnimations();
+
+        // Initialize see more functionality for new concepts
+        initSeeMoreConcepts();
+    }
+
+    // Create Concept Card Element
+    function createConceptCard(concept, index) {
+        const conceptCard = document.createElement('div');
+        conceptCard.className = 'project-showcase';
+        if (index >= 2) {
+            conceptCard.classList.add('hidden-project');
+        }
+
+        const imageUrl = concept.photo ? `https://pocketbase-5i4fn3.chbk.app/api/files/mahsa_concept/${concept.id}/${concept.photo}` : 'images/projects.png';
+
+        conceptCard.innerHTML = `
+            <div class="project-image">
+                <img src="${imageUrl}" alt="${concept.title}" class="project-img">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">${concept.title}</h3>
+                <p class="project-description">${concept.subtitle}</p>
+                <div class="project-buttons">
+                    ${concept.figma ? `<a href="${concept.figma}" class="project-btn btn-figma" target="_blank">
+                        <i class="fab fa-figma"></i>
+                        See on Figma
+                    </a>` : ''}
+                    ${concept.behance ? `<a href="${concept.behance}" class="project-btn btn-behance" target="_blank">
+                        <i class="fab fa-behance"></i>
+                        See on Behance
+                    </a>` : ''}
+                </div>
+            </div>
+        `;
+
+        return conceptCard;
+    }
+
+    // See More Concepts functionality
+    function initSeeMoreConcepts() {
+        const seeMoreBtn = document.getElementById('seeMoreBtn');
+        const hiddenConcepts = document.querySelectorAll('#concepts .hidden-project');
+
+        if (seeMoreBtn && hiddenConcepts.length > 0) {
+            // Remove existing event listeners
+            seeMoreBtn.replaceWith(seeMoreBtn.cloneNode(true));
+            const newSeeMoreBtn = document.getElementById('seeMoreBtn');
+
+            newSeeMoreBtn.addEventListener('click', function () {
+                const isShowing = hiddenConcepts[0].classList.contains('show');
+
+                hiddenConcepts.forEach(concept => {
+                    if (isShowing) {
+                        concept.classList.remove('show');
+                    } else {
+                        concept.classList.add('show');
+                    }
+                });
+
+                // Toggle button state
+                if (isShowing) {
+                    newSeeMoreBtn.classList.remove('active');
+                    const buttonText = newSeeMoreBtn.querySelector('.see-more-text');
+                    buttonText.textContent = 'See More Concepts';
+                } else {
+                    newSeeMoreBtn.classList.add('active');
+                    const buttonText = newSeeMoreBtn.querySelector('.see-more-text');
+                    buttonText.textContent = 'See Less Concepts';
+                }
+            });
+        }
+    }
+
+    // Fetch Kit from API
+    async function fetchKit() {
+        try {
+            const response = await fetch('https://pocketbase-5i4fn3.chbk.app/api/collections/mahsa_kit/records');
+            const data = await response.json();
+
+            if (data.items && data.items.length > 0) {
+                updateKitSection(data.items);
+            }
+        } catch (error) {
+            console.error('Error fetching kit:', error);
+        }
+    }
+
+    // Update Kit Section with API data
+    function updateKitSection(kitItems) {
+        const kitGrid = document.querySelector('#kit .projects-grid');
+        if (!kitGrid) return;
+
+        // Clear existing content
+        kitGrid.innerHTML = '';
+
+        kitItems.forEach((kitItem, index) => {
+            const kitCard = createKitCard(kitItem, index);
+            kitGrid.appendChild(kitCard);
+        });
+
+        // Reinitialize scroll animations for new content
+        initScrollAnimations();
+
+        // Initialize see more functionality for new kit items
+        initSeeMoreKit();
+    }
+
+    // Create Kit Card Element
+    function createKitCard(kitItem, index) {
+        const kitCard = document.createElement('div');
+        kitCard.className = 'project-showcase';
+        if (index >= 2) {
+            kitCard.classList.add('hidden-project');
+        }
+
+        const imageUrl = kitItem.photo ? `https://pocketbase-5i4fn3.chbk.app/api/files/mahsa_kit/${kitItem.id}/${kitItem.photo}` : 'images/projects.png';
+
+        kitCard.innerHTML = `
+            <div class="project-image">
+                <img src="${imageUrl}" alt="${kitItem.title}" class="project-img">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">${kitItem.title}</h3>
+                <p class="project-description">${kitItem.subtitle}</p>
+                <div class="project-buttons">
+                    ${kitItem.figma ? `<a href="${kitItem.figma}" class="project-btn btn-figma" target="_blank">
+                        <i class="fab fa-figma"></i>
+                        See on Figma
+                    </a>` : ''}
+                    ${kitItem.behance ? `<a href="${kitItem.behance}" class="project-btn btn-behance" target="_blank">
+                        <i class="fab fa-behance"></i>
+                        See on Behance
+                    </a>` : ''}
+                </div>
+            </div>
+        `;
+
+        return kitCard;
+    }
+
+    // See More Kit functionality
+    function initSeeMoreKit() {
+        const seeMoreKitBtn = document.getElementById('seeMoreKitBtn');
+        const hiddenKitItems = document.querySelectorAll('#kit .hidden-project');
+
+        if (seeMoreKitBtn && hiddenKitItems.length > 0) {
+            // Remove existing event listeners
+            seeMoreKitBtn.replaceWith(seeMoreKitBtn.cloneNode(true));
+            const newSeeMoreKitBtn = document.getElementById('seeMoreKitBtn');
+
+            newSeeMoreKitBtn.addEventListener('click', function () {
+                const isShowing = hiddenKitItems[0].classList.contains('show');
+
+                hiddenKitItems.forEach(kitItem => {
+                    if (isShowing) {
+                        kitItem.classList.remove('show');
+                    } else {
+                        kitItem.classList.add('show');
+                    }
+                });
+
+                // Toggle button state
+                if (isShowing) {
+                    newSeeMoreKitBtn.classList.remove('active');
+                    const buttonText = newSeeMoreKitBtn.querySelector('.see-more-text');
+                    buttonText.textContent = 'See More Kit';
+                } else {
+                    newSeeMoreKitBtn.classList.add('active');
+                    const buttonText = newSeeMoreKitBtn.querySelector('.see-more-text');
+                    buttonText.textContent = 'See Less Kit';
+                }
+            });
+        }
+    }
+
+    // Fetch projects, concepts, and kit on page load
+    fetchProjects();
+    fetchConcepts();
+    fetchKit();
 
     // Contact Form Functionality
     const contactForm = document.getElementById('contactForm');

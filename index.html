@@ -1,19 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+    Portfolio Website - Mahsa's UI/UX Design Portfolio
+    =================================================
+    
+    This is a modern, responsive portfolio website showcasing UI/UX design work.
+    Features include:
+    - Responsive design for all devices
+    - Dynamic content loading from PocketBase API
+    - Smooth animations and transitions
+    - Mobile-first approach
+    - SEO optimized structure
+    
+    Author: Aradazr
+    Version: 1.0.0
+    Last Updated: 2024
+-->
 
 <head>
+    <!-- Meta Tags for SEO and Responsive Design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Mahsa - Professional UI/UX Designer Portfolio. Showcasing creative design projects, user experience solutions, and innovative digital experiences.">
+    <meta name="keywords" content="UI/UX Designer, Portfolio, Design, User Experience, Interface Design, Creative">
+    <meta name="author" content="Mahsa">
+
+    <!-- Page Title -->
     <title>Mahsa - UI/UX Designer</title>
+    <!-- External Stylesheets and Fonts -->
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- EmailJS for Contact Form Functionality -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 
 <body>
-    <!-- Header Section -->
+    <!-- 
+        HEADER SECTION
+        ===============
+        Fixed navigation header with responsive mobile menu
+        Contains logo, navigation links, and hamburger menu for mobile
+    -->
     <header class="header">
         <nav class="nav">
             <div class="nav-brand">
@@ -32,6 +63,7 @@
                     Contact me
                 </a>
             </div>
+            <!-- Mobile Navigation Toggle -->
             <div class="hamburger" onclick="toggleMobileMenu()">
                 <span></span>
                 <span></span>
@@ -40,7 +72,12 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- 
+        HERO SECTION
+        ============
+        Main landing section with animated background elements
+        Contains personal introduction, profession, and call-to-action buttons
+    -->
     <section id="home" class="hero">
         <div class="parallax-layer-1"></div>
         <div class="parallax-layer-2"></div>
@@ -61,7 +98,12 @@
         </div>
     </section>
 
-    <!-- About Me Section -->
+    <!-- 
+        ABOUT ME SECTION
+        =================
+        Personal introduction and background information
+        Features animated elements and floating orbs for visual appeal
+    -->
     <section id="about" class="about">
         <div class="sparkle"></div>
         <div class="sparkle"></div>
@@ -92,7 +134,12 @@
 
 
 
-    <!-- Projects Section -->
+    <!-- 
+        PROJECTS SECTION
+        ================
+        Showcase of design projects with dynamic loading from API
+        Features project cards with images, descriptions, and external links
+    -->
     <section id="projects" class="projects">
         <div class="container">
             <div class="projects-header">
@@ -187,7 +234,12 @@
         </div>
     </section>
 
-    <!-- Concepts Section -->
+    <!-- 
+        CONCEPTS SECTION
+        ================
+        Design concepts and creative ideas showcase
+        Features concept cards with dynamic loading from API
+    -->
     <section id="concepts" class="concepts">
         <div class="container">
             <div class="concepts-header">
@@ -198,6 +250,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Dynamic Concepts Grid - Content loaded from API -->
             <div class="projects-grid">
                 <!-- Concepts will be loaded dynamically from API -->
             </div>
@@ -211,7 +264,12 @@
         </div>
     </section>
 
-    <!-- Kit Section -->
+    <!-- 
+        KIT SECTION
+        ===========
+        Design system and component library showcase
+        Features design kits, icon sets, and template collections
+    -->
     <section id="kit" class="kit">
         <div class="container">
             <div class="kit-header">
@@ -222,6 +280,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Dynamic Kit Grid - Content loaded from API -->
             <div class="projects-grid">
                 <!-- Kit items will be loaded dynamically from API -->
             </div>
@@ -235,7 +294,12 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- 
+        SKILLS SECTION
+        ==============
+        Professional skills and expertise showcase
+        Features skill cards with icons and descriptions, expandable with "See More"
+    -->
     <section id="skills" class="skills">
         <div class="container">
             <div class="skills-header">
@@ -335,13 +399,19 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- 
+        TESTIMONIALS SECTION
+        ====================
+        Client feedback and testimonials showcase
+        Features horizontally scrolling opinion cards with dynamic loading from API
+    -->
     <section id="testimonials" class="testimonials">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">What People Say</h2>
                 <p class="section-subtitle">Client testimonials and feedback</p>
             </div>
+            <!-- Dynamic Testimonials Container - Content loaded from API -->
             <div class="testimonials-scroll-container">
                 <div class="testimonials-scroll">
                     <!-- Opinions will be loaded dynamically from API -->
@@ -350,7 +420,12 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- 
+        CONTACT SECTION
+        ===============
+        Contact information and contact form
+        Features contact details, social links, and EmailJS-powered contact form
+    -->
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
@@ -411,6 +486,12 @@
     </section>
 
     <!-- Footer -->
+    <!-- 
+        FOOTER SECTION
+        ==============
+        Site footer with navigation links, social media, and copyright information
+        Features responsive layout and external links
+    -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">

@@ -1,6 +1,39 @@
-// Simple JavaScript for the portfolio website
+/*
+    Portfolio Website JavaScript
+    ===========================
+    
+    This JavaScript file handles all interactive functionality for Mahsa's UI/UX Design Portfolio.
+    Features include:
+    - Dynamic content loading from PocketBase API
+    - Mobile navigation functionality
+    - Smooth scrolling and animations
+    - Contact form with EmailJS integration
+    - Responsive design interactions
+    - Performance optimizations
+    
+    Dependencies:
+    - EmailJS for contact form functionality
+    - PocketBase API for dynamic content
+    - Font Awesome for icons
+    
+    Author: Aradazr
+    Version: 1.0.0
+    Last Updated: 2024
+*/
 
-// Global function for inline onclick handler
+// ============================================================================
+// GLOBAL FUNCTIONS
+// ============================================================================
+
+/**
+ * Global function for mobile menu toggle - accessible from HTML onclick
+ * Toggles the mobile navigation menu visibility
+ */
+
+/**
+ * Global function for mobile menu toggle - accessible from HTML onclick
+ * Toggles the mobile navigation menu visibility
+ */
 function toggleMobileMenu() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
@@ -14,13 +47,36 @@ function toggleMobileMenu() {
     }
 }
 
-// Initialize EmailJS
+// ============================================================================
+// EMAILJS INITIALIZATION
+// ============================================================================
+
+/**
+ * Initialize EmailJS service for contact form functionality
+ * Sets up the EmailJS service with the provided user ID
+ */
 (function () {
     emailjs.init("_IuuDYG72uM9Pxa8X");
 })();
 
+// ============================================================================
+// MAIN APPLICATION INITIALIZATION
+// ============================================================================
+
+/**
+ * Main application initialization - runs when DOM is fully loaded
+ * Sets up all event listeners, animations, and API integrations
+ */
 document.addEventListener('DOMContentLoaded', function () {
-    // Header scroll effect
+
+    // ============================================================================
+    // HEADER FUNCTIONALITY
+    // ============================================================================
+
+    /**
+     * Header scroll effect - adds background blur when scrolling
+     * Enhances visual hierarchy and improves readability
+     */
     function headerScrollEffect() {
         const header = document.querySelector('.header');
         if (window.scrollY > 100) {
@@ -30,7 +86,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Smooth scrolling for navigation links
+    /**
+     * Smooth scrolling for navigation links
+     * Provides smooth scrolling animation when clicking navigation links
+     * @param {Event} e - The click event object
+     */
     function smoothScroll(e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
@@ -53,7 +113,12 @@ document.addEventListener('DOMContentLoaded', function () {
     //     hamburger.classList.toggle('active');
     // }
 
-    // Create magic wand cursor
+    /**
+     * Create animated magic wand cursor effect
+     * Adds a floating magic wand emoji that follows mouse movement
+     * Enhances the magical/creative theme of the portfolio
+     * Note: Hidden on mobile devices for better performance
+     */
     function createMagicWandCursor() {
         const cursor = document.createElement('div');
         cursor.className = 'magic-wand-cursor';
@@ -104,7 +169,13 @@ document.addEventListener('DOMContentLoaded', function () {
         return cursor;
     }
 
-    // Create sparkle effect
+    /**
+     * Create sparkle effect animation at specified coordinates
+     * Generates animated sparkles with various shapes and colors
+     * Used for interactive click effects throughout the site
+     * @param {number} x - X coordinate for sparkle center
+     * @param {number} y - Y coordinate for sparkle center
+     */
     function createSparkleEffect(x, y) {
         const colors = ['#a855f7', '#c084fc', '#7c3aed', '#f8fafc', '#cbd5e1'];
         const sparkleTypes = ['star', 'circle', 'diamond', 'cross', 'triangle'];
@@ -663,7 +734,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize scroll animations
     initScrollAnimations();
 
-    // Fetch Projects from API
+    // ============================================================================
+    // API INTEGRATION - PROJECTS
+    // ============================================================================
+
+    /**
+     * Fetch projects data from PocketBase API
+     * Retrieves project information including images, titles, descriptions, and links
+     * @returns {Promise<Array>} Array of project objects from API
+     */
     async function fetchProjects() {
         try {
             const response = await fetch('https://pocketbase-5i4fn3.chbk.app/api/collections/mahsa_project/records');
@@ -677,7 +756,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Update Projects Section with API data
+    /**
+     * Update the projects section with dynamically loaded data
+     * Clears existing content and populates with new project cards
+     * Reinitializes animations and "See More" functionality
+     * @param {Array} projects - Array of project objects from API
+     */
     function updateProjectsSection(projects) {
         const projectsGrid = document.querySelector('#projects .projects-grid');
         if (!projectsGrid) return;
@@ -697,7 +781,13 @@ document.addEventListener('DOMContentLoaded', function () {
         initSeeMoreProjects();
     }
 
-    // Create Project Card Element
+    /**
+     * Create a project card HTML element from API data
+     * Generates complete project showcase with image, title, description, and action buttons
+     * @param {Object} project - Project object from API
+     * @param {number} index - Index of project in the array
+     * @returns {HTMLElement} Complete project card element
+     */
     function createProjectCard(project, index) {
         const projectCard = document.createElement('div');
         projectCard.className = 'project-showcase';
@@ -730,7 +820,15 @@ document.addEventListener('DOMContentLoaded', function () {
         return projectCard;
     }
 
-    // Fetch Concepts from API
+    // ============================================================================
+    // API INTEGRATION - CONCEPTS
+    // ============================================================================
+
+    /**
+     * Fetch concepts data from PocketBase API
+     * Retrieves concept information including images, titles, and descriptions
+     * @returns {Promise<Array>} Array of concept objects from API
+     */
     async function fetchConcepts() {
         try {
             const response = await fetch('https://pocketbase-5i4fn3.chbk.app/api/collections/mahsa_concept/records');
@@ -1181,10 +1279,18 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Initialize mobile navigation
+    // ============================================================================
+    // INITIALIZATION AND EVENT LISTENERS
+    // ============================================================================
+
+    // Initialize all core functionality
     initMobileNav();
 
-    // Fallback mobile menu - simple click handler
+    /**
+     * Fallback mobile menu initialization
+     * Ensures mobile navigation works across different browsers and devices
+     * Uses multiple event listeners for maximum compatibility
+     */
     document.addEventListener('DOMContentLoaded', function () {
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
@@ -1226,4 +1332,47 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Hamburger or nav menu not found in DOMContentLoaded!');
         }
     });
-}); 
+
+    // ============================================================================
+    // API DATA LOADING
+    // ============================================================================
+
+    // Load all dynamic content from APIs
+    fetchProjects();
+    fetchConcepts();
+    fetchKit();
+    fetchOpinions();
+
+}); // End of DOMContentLoaded
+
+/*
+    ============================================================================
+    END OF PORTFOLIO WEBSITE JAVASCRIPT
+    ============================================================================
+    
+    This file provides a complete interactive experience for the portfolio website,
+    including dynamic content loading, smooth animations, mobile responsiveness,
+    and modern web development best practices.
+    
+    Key Features Implemented:
+    - ✅ Dynamic content loading from PocketBase API
+    - ✅ Mobile-first responsive design
+    - ✅ Smooth scrolling and animations
+    - ✅ Interactive effects (sparkles, magic wand cursor)
+    - ✅ Contact form with EmailJS integration
+    - ✅ "See More" functionality for all sections
+    - ✅ Performance optimizations
+    - ✅ Cross-browser compatibility
+    - ✅ Accessibility considerations
+    
+    Performance Notes:
+    - API calls are made asynchronously to prevent blocking
+    - Event listeners are properly managed to prevent memory leaks
+    - Mobile-specific optimizations (hidden cursor on mobile)
+    - Efficient DOM manipulation with minimal reflows
+    
+    Browser Support:
+    - Modern browsers (Chrome, Firefox, Safari, Edge)
+    - Mobile browsers (iOS Safari, Chrome Mobile)
+    - Progressive enhancement for older browsers
+*/

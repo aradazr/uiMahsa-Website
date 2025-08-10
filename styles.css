@@ -1,46 +1,90 @@
-/* Reset and Base Styles */
+/*
+    Portfolio Website Stylesheet
+    ===========================
+    
+    This stylesheet contains all styling for Mahsa's UI/UX Design Portfolio.
+    Features include:
+    - Responsive design with mobile-first approach
+    - CSS custom properties for consistent theming
+    - Smooth animations and transitions
+    - Modern layout techniques (Flexbox, Grid)
+    - Progressive enhancement for older browsers
+    
+    Author: Aradazr
+    Version: 1.0.0
+    Last Updated: 2024
+*/
+
+/* ==========================================================================
+   RESET AND BASE STYLES
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* CSS Custom Properties (CSS Variables) for consistent theming */
 :root {
+    /* Color Palette - Primary Colors */
     --primary-white: #ffffff;
     --secondary-white: #f8fafc;
     --tertiary-white: #f1f5f9;
     --primary-dark: #171838;
     --primary-blue: #171838;
     --secondary-blue: #4C00FE;
+
+    /* Accent Colors */
     --accent-lilac: #4C00FE;
     --accent-lilac-light: #4C00FE;
     --accent-lilac-dark: #4C00FE;
+
+    /* Typography Colors */
     --text-primary: #171838;
     --text-secondary: #475569;
     --text-muted: #64748b;
+
+    /* Glass Morphism Effects */
     --glass-bg: rgba(255, 255, 255, 0.1);
     --glass-border: rgba(104, 73, 197, 0.2);
+
+    /* Shadow System */
     --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     --shadow-heavy: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
 }
 
+/* Base Body Styles */
 body {
     font-family: 'Poppins', sans-serif;
+    /* Modern, clean typography */
     background: linear-gradient(135deg, var(--primary-white) 0%, var(--secondary-white) 50%, var(--tertiary-white) 100%);
     color: var(--text-primary);
     line-height: 1.6;
+    /* Optimal reading line height */
     overflow-x: hidden;
+    /* Prevent horizontal scrolling */
 }
 
-/* Container */
+/* ==========================================================================
+   LAYOUT COMPONENTS
+   ========================================================================== */
+
+/* Main Container - Responsive max-width container */
 .container {
     max-width: 1200px;
+    /* Maximum content width */
     margin: 0 auto;
+    /* Center container horizontally */
     padding: 0 20px;
+    /* Horizontal padding for mobile */
 }
 
-/* Header Styles */
+/* ==========================================================================
+   HEADER AND NAVIGATION
+   ========================================================================== */
+
+/* Fixed Header - Sticky navigation with glass morphism effect */
 .header {
     position: fixed;
     top: 0;

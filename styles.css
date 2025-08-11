@@ -2339,7 +2339,7 @@ section {
 .testimonials-scroll {
     display: flex;
     gap: 2rem;
-    animation: scroll-testimonials 30s linear infinite;
+    animation: scroll-testimonials 25s linear infinite;
     width: max-content;
     padding: 0;
     margin-left: 0;
@@ -3113,6 +3113,15 @@ section {
         margin: 0 1rem;
     }
 
+    .testimonials-scroll {
+        animation: scroll-testimonials 18s linear infinite;
+        gap: 1rem;
+    }
+
+    .testimonials-scroll:hover {
+        animation-play-state: running;
+    }
+
     .testimonial-content p {
         font-size: 0.9rem;
         line-height: 1.6;
@@ -3390,6 +3399,11 @@ section {
 
     .testimonials-scroll {
         gap: 1rem;
+        animation: scroll-testimonials 25s linear infinite;
+    }
+
+    .testimonials-scroll:hover {
+        animation-play-state: running;
     }
 
     .testimonials-scroll-container {

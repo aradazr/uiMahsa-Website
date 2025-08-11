@@ -2339,22 +2339,44 @@ section {
 .testimonials-scroll {
     display: flex;
     gap: 2rem;
+    -webkit-animation: scroll-testimonials 25s linear infinite;
     animation: scroll-testimonials 25s linear infinite;
     width: max-content;
     padding: 0;
     margin-left: 0;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    will-change: transform;
 }
 
 .testimonials-scroll:hover {
     animation-play-state: paused;
 }
 
-@keyframes scroll-testimonials {
+@-webkit-keyframes scroll-testimonials {
     0% {
+        -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
     }
 
     100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+@keyframes scroll-testimonials {
+    0% {
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
         transform: translateX(0);
     }
 }
@@ -3114,8 +3136,14 @@ section {
     }
 
     .testimonials-scroll {
+        -webkit-animation: scroll-testimonials 18s linear infinite;
         animation: scroll-testimonials 18s linear infinite;
         gap: 1rem;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        will-change: transform;
     }
 
     .testimonials-scroll:hover {
@@ -3399,7 +3427,13 @@ section {
 
     .testimonials-scroll {
         gap: 1rem;
+        -webkit-animation: scroll-testimonials 25s linear infinite;
         animation: scroll-testimonials 25s linear infinite;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        will-change: transform;
     }
 
     .testimonials-scroll:hover {

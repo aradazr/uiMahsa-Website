@@ -2792,13 +2792,14 @@ section {
     /* Hero Section */
     .hero {
         min-height: 100vh;
-        padding: 6rem 0 3rem;
+        padding: 1rem 0 0;
+        margin-top: 0;
     }
 
     .hero-content {
         flex-direction: column;
         text-align: center;
-        gap: 2rem;
+        gap: 1.2rem;
     }
 
     .hero-image {
@@ -2832,7 +2833,7 @@ section {
     }
 
     .hero-cursor-one {
-        top: 12%;
+        top: 25%;
         right: 8%;
         transform: scale(0.2);
     }
@@ -3147,7 +3148,8 @@ section {
 
     /* Hero Section */
     .hero {
-        padding: 5rem 0 2rem;
+        padding: 1.5rem 0 0;
+        margin-top: 0;
     }
 
     .hero-image {
@@ -3393,7 +3395,7 @@ section {
 
     /* Cursor elements */
     .hero-cursor-one {
-        top: 10%;
+        top: 20%;
         right: 5%;
         transform: scale(0.15);
     }
